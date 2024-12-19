@@ -8,6 +8,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { Button } from "./components/ui/button";
+import NavBar from "./components/NavBar";
 
 function App() {
   const showSideBar = useBreakpointValue({ base: false, lg: true });
@@ -19,7 +20,7 @@ function App() {
       }}
     >
       <GridItem area="nav" bg={"red"}>
-        NavBar
+        <NavBar />
       </GridItem>
 
       {/* Using breakpointValue */}
