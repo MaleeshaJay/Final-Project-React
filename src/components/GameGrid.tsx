@@ -6,11 +6,13 @@ const GameGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
-        {games.map((game) => (
-          <li key={game.id}>{game.name}</li>
-        ))}
-      </ul>
+      {!error && (
+        <ul>
+          {games.map((game) => (
+            <li key={game.id}>{game.name}</li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
