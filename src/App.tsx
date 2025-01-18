@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Button } from "./components/ui/button";
 import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   const showSideBar = useBreakpointValue({ base: false, lg: true });
@@ -19,7 +20,7 @@ function App() {
         lg: `"nav nav" "aside main" "footer footer"`,
       }}
     >
-      <GridItem area="nav" bg={"red"}>
+      <GridItem area="nav">
         <NavBar />
       </GridItem>
 
@@ -31,7 +32,7 @@ function App() {
       )}
 
       <GridItem area="main" bg={"green"}>
-        Main Content
+        <GameGrid />
       </GridItem>
       <GridItem area="footer" bg={"yellow"}>
         Footer
