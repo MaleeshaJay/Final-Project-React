@@ -10,6 +10,7 @@ import {
 import { Button } from "./components/ui/button";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 function App() {
   const showSideBar = useBreakpointValue({ base: false, lg: true });
@@ -26,8 +27,8 @@ function App() {
 
       {/* Using breakpointValue */}
       {showSideBar && (
-        <GridItem area="aside" bg={"blue"}>
-          Side Bar
+        <GridItem area="aside">
+          <GenreList />
         </GridItem>
       )}
 
