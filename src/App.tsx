@@ -1,13 +1,5 @@
-import { useState } from "react";
 import "./App.css";
-import {
-  Grid,
-  GridItem,
-  HStack,
-  Show,
-  useBreakpointValue,
-} from "@chakra-ui/react";
-import { Button } from "./components/ui/button";
+import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -27,7 +19,7 @@ function App() {
 
       {/* Using breakpointValue */}
       {showSideBar && (
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={"5px"}>
           <GenreList />
         </GridItem>
       )}
