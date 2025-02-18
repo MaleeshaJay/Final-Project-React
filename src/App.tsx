@@ -1,5 +1,5 @@
 import "./App.css";
-import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -24,15 +24,31 @@ function App() {
         lg: `"nav nav" "aside main" "footer footer"`,
       }}
     >
-      <GridItem area="nav">
+      <GridItem area="nav" position="sticky" top={0} zIndex={1} bg="black">
         <NavBar />
       </GridItem>
 
       {/* Using breakpointValue */}
       {showSideBar && (
-        <GridItem area="aside" paddingX={"5px"}>
+        <GridItem
+          area="aside"
+          paddingX={5}
+          position={"sticky"}
+          top={0}
+          height="85vh"
+          overflow="auto"
+          css={{
+            /* Hide ScrollBar */
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            msOverflowStyle: "none",
+            scrollbarWidth: "none",
+          }}
+        >
           <GenreList
             onSelectedGenre={(genre: Genre) => setSelectedGenre(genre)}
+            selectedGenre={selectedGenre}
           />
         </GridItem>
       )}
@@ -40,8 +56,10 @@ function App() {
       <GridItem area="main">
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
-      <GridItem area="footer" bg={"yellow"}>
-        Footer
+      <GridItem area="footer" bg={"yellow"} w="full">
+        <Box w="full" textAlign="center" p={4}>
+          Footer
+        </Box>
       </GridItem>
     </Grid>
   );

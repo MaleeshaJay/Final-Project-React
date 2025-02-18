@@ -11,9 +11,10 @@ import getOptimizedImageUrl from "../services/image-url";
 
 interface GenreListProps {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectedGenre }: GenreListProps) => {
+const GenreList = ({ onSelectedGenre, selectedGenre }: GenreListProps) => {
   const { data, loading, error } = useGenre();
   if (error) return null;
   if (loading) return <Spinner />;
@@ -28,7 +29,8 @@ const GenreList = ({ onSelectedGenre }: GenreListProps) => {
               src={getOptimizedImageUrl(genre.image_background)}
             />
             <Button
-              fontSize={"lg"}
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              fontSize={genre.id === selectedGenre?.id ? "xl" : "md"}
               variant={"ghost"}
               onClick={() => {
                 onSelectedGenre(genre);
