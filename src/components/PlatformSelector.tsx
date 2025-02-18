@@ -24,7 +24,7 @@ const PlatformSelector = ({
 
   return (
     <MenuRoot>
-      <MenuTrigger asChild width={"20%"}>
+      <MenuTrigger asChild width={{ base: "100%", md: "20%" }}>
         <Button variant="outline" size="sm">
           {selectedPlatform ? selectedPlatform.name : "Select Platform"}
           <IoIosArrowDown fontWeight={"bold"} fontSize={"20px"} />

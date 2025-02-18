@@ -11,6 +11,7 @@ import { Platform } from "./hooks/useGames";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  searchText: string;
 }
 
 function App() {
@@ -27,7 +28,11 @@ function App() {
       }}
     >
       <GridItem area="nav" position="sticky" top={0} zIndex={1} bg="black">
-        <NavBar />
+        <NavBar
+          onSearch={(searchText: string) =>
+            setGameQuery({ ...gameQuery, searchText })
+          }
+        />
       </GridItem>
 
       {/* Using breakpointValue */}

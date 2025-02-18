@@ -1,11 +1,16 @@
 import { HStack, Image } from "@chakra-ui/react";
-import React from "react";
 import logo from "../assets/logo.png";
+import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface NavBarProps {
+  onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: NavBarProps) => {
   return (
-    <HStack padding={"20px"}>
+    <HStack padding={"20px"} justifyContent={"space-between"}>
       <Image src={logo} height={{ base: "40px", md: "50px", lg: "60px" }} />
+      <SearchInput onSearch={onSearch} />
     </HStack>
   );
 };
