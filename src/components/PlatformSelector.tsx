@@ -5,19 +5,29 @@ import {
   MenuRoot,
   MenuTrigger,
 } from "@chakra-ui/react";
-import React from "react";
 import usePlatforms from "../hooks/usePlatforms";
+import { Platform } from "../hooks/useGames";
+import { IoIosArrowDown } from "react-icons/io";
 
-const PlatformSelector = () => {
+interface PlatformSelectorProps {
+  onSelectedPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({
+  onSelectedPlatform,
+  selectedPlatform,
+}: PlatformSelectorProps) => {
   const { data, error } = usePlatforms();
 
   if (error) return null;
 
   return (
     <MenuRoot>
-      <MenuTrigger asChild>
+      <MenuTrigger asChild width={"20%"}>
         <Button variant="outline" size="sm">
-          Platform Selector
+          {selectedPlatform ? selectedPlatform.name : "Select Platform"}
+          <IoIosArrowDown fontWeight={"bold"} fontSize={"20px"} />
         </Button>
       </MenuTrigger>
       <MenuContent
@@ -27,7 +37,12 @@ const PlatformSelector = () => {
         zIndex={10}
       >
         {data.map((platform) => (
-          <MenuItem value={platform.name}>{platform.name}</MenuItem>
+          <MenuItem
+            onClick={() => onSelectedPlatform(platform as Platform)}
+            value={platform.name}
+          >
+            {platform.name}
+          </MenuItem>
         ))}
       </MenuContent>
     </MenuRoot>
